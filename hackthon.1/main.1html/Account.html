@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Settings</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<style>
+    body { 
+        font-family: Arial, sans-serif;
+        background-color: #0a0a0a; /* Darker black like in the image */
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        color: #FFFFFF;
+    }  
+  
+    .container {
+        display: flex;
+        background-color: #121212; /* Dark gray, almost black */
+        border-radius: 10px;
+        box-shadow: 0 0 30px rgba(255, 0, 0, 0.7); /* Much stronger red shadow */
+        overflow: hidden;
+        width: 80%;
+    }
+
+    .profile-section {
+        width: 30%;
+        background-color: #1a1a1a; /* Slightly lighter black */
+        padding: 20px;
+        text-align: center;
+    }
+
+    .profile-image {
+        position: relative;
+        display: inline-block;
+    }
+    
+    .profile-image img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        border: 3px solid #d61c3f; /* More subtle red border */
+    }
+    
+    .camera-icon {
+        position: absolute;
+        bottom: 5px;
+        right: 5px;
+        background:#ff0000; /* More subtle red background */
+        border-radius: 50%;
+        padding: 5px;
+        font-size: 14px;
+    }
+
+    .stats span {
+        font-weight: bold;
+        color:#ff0000; /* More subtle red text for emphasis */
+    }
+    
+    .profile-btn, .favorites-btn {
+        width: 100%;
+        background-color:#ff0000; /* More subtle red buttons */
+        border: none;
+        padding: 10px;
+        margin-top: 10px;
+        cursor: pointer;
+        border-radius: 5px;
+        color: white; /* White text on red buttons */
+        transition: background-color 0.3s ease;
+    }
+
+    .profile-btn:hover, .favorites-btn:hover {
+        background-color:#ff0000; /* Light but not too bright red on hover */
+    }
+    
+    .settings-section {
+        width: 70%;
+        padding: 20px;
+    }
+
+    .tabs {
+        display: flex;
+        border-bottom: 2px solid #333; /* Dark gray border */
+        padding-bottom: 5px;
+        margin-bottom: 15px;
+    }
+
+    .tabs a {
+        margin-right: 20px;
+        text-decoration: none;
+        color: #FFFFFF;
+        padding: 5px;
+        transition: color 0.3s ease;
+    }
+    
+    .tabs a:hover:not(.active) {
+        color: #e84c6a; /* More subtle light red on hover */
+    }
+
+    .tabs .active {
+        border-bottom: 3px solid #d61c3f; /* More subtle red underline for active tab */
+        font-weight: bold;
+        color: #d61c3f; /* More subtle red text for active tab */
+    }
+
+    .form-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+    }
+
+    .form-group input, .form-group select {
+        padding: 10px;
+        border: 1px solid #d61c3f; /* Red border for inputs */
+        border-radius: 5px;
+        background-color: #121212; /* Dark background */
+        color: white;
+        margin: 5px;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .form-group input:focus, .form-group select:focus {
+        border-color: #ff3358; /* Brighter red border when focused */
+        box-shadow: 0 0 5px rgba(214, 28, 63, 0.5); /* Red glow when focused */
+    }
+    
+    .form-group input:hover, .form-group select:hover {
+        border-color: #e84c6a; /* Light red border on hover */
+        box-shadow: 0 0 8px rgba(216, 28, 63, 0.4); /* Light red glow on hover */
+    }
+    
+    .update-btn {
+        grid-column: 1 / -1; 
+        justify-self: center; 
+        width: auto; 
+        background:#ff0000; /* More subtle red button */
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        font-size: 16px;
+        margin: 50px;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .update-btn:hover {
+        background: #ff0000; /* Light red on hover */
+        box-shadow: 0 0 10px rgba(216, 28, 63, 0.5); /* Light red glow on hover */
+    }
+    
+    /* Red glowing effect like in the image */
+    .profile-image:after {
+        content: '';
+        position: absolute;
+        top: -10px;
+        left: -10px;
+        right: -10px;
+        bottom: -10px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(216, 28, 63, 0.2) 0%, rgba(0,0,0,0) 70%);
+        z-index: -1;
+        transition:  0.3s ease;
+    }
+    
+    .profile-image:hover:after {
+        background: radial-gradient(circle, rgba(216, 28, 63, 0.3) 0%, rgba(0,0,0,0) 80%); /* Brighter glow on hover */
+    }
+</style>
+<body>
+    <div class="container">
+        <div class="profile-section">
+            <div class="profile-image">
+                <img src="/mr.jpg" alt="Profile Picture">
+                <div class="camera-icon">
+                    <i class="fa-solid fa-camera"></i>
+                </div>
+            </div>
+            <h2>Mr.Beast</h2>
+            <p>Tech Reviewer & Unboxer</p>
+
+            <div class="stats">
+                <p>Total Subscribers <span>150K</span></p>
+                <p>Total Videos <span>320</span></p>
+                <p>Total Views <span>12M</span></p>
+            </div>
+
+            <button class="profile-btn">View YouTube Channel</button>
+            <button class="favorites-btn"><i class="fa-solid fa-bell"></i> Follow Creator</button>
+        
+        </div>
+
+        <div class="settings-section">
+            <div class="tabs">
+                <a href="#" class="active">Account Settings</a>
+                <a href="#">Channel</a>
+                <a href="#">Content</a>
+                <a href="#">Earnings</a>
+                <a href="#">Community</a>
+            </div>
+
+            <div class="form-container">
+                <div class="form-group">
+                    <label>YouTuber Name:</label>
+                    <input type="text" value="TechMaster">
+                </div>
+                <div class="form-group">
+                    <label>Channel Name:</label>
+                    <input type="text" value="TechMaster Reviews">
+                </div>
+                <div class="form-group">
+                    <label>Subscribers:</label>
+                    <input type="text" value="150K Subscribers">
+                </div>
+                <div class="form-group">
+                    <label>YouTube Email:</label>
+                    <input type="email" value="techmaster@gmail.com">
+                </div>
+                <div class="form-group">
+                    <label>Channel Category:</label>
+                    <input type="text" value="Tech Reviews">
+                </div>
+                <div class="form-group">
+                    <label>Total Videos:</label>
+                    <input type="text" value="320 Videos">
+                </div>
+                <div class="form-group">
+                    <label>Total Views:</label>
+                    <input type="text" value="12M Views">
+                </div>
+                <div class="form-group">
+                    <label>Joined:</label>
+                    <input type="text" value="2018">
+                </div>
+                <div class="form-group">
+                    <label>Country:</label>
+                    <input type="text" value="India">
+                </div>
+                <button class="update-btn"><i class="fa-solid fa-sync"></i> Update</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
