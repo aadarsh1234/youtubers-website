@@ -1,0 +1,3600 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TubeTribe.in</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+</head>
+
+<style>
+
+    
+
+:root {
+
+    --youtube-red: #FF0000;
+
+    --dark-bg: #0F0F0F;
+
+    background-color:black;
+
+    --text-primary: #FFFFFF;
+
+    --text-secondary: #AAAAAA;
+
+    --hover-bg: #2a2a2a;
+
+}
+
+.logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            /* margin-top: 10px; */
+        }
+
+        .logo-text {
+            font-size: 2rem;
+            font-weight: 550;
+            color: #fff;
+            transition: all 0.3s ease;
+            margin-right: 10px;
+        }
+
+        .logo-text:hover {
+            color: #8c52ff;
+            transform: scale(1.05);
+        }
+
+.main-header {
+
+    background-color:black;
+
+    padding: 0.8rem 0;
+
+    border-bottom: 1px solid #2d2d2d;
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 1000;
+
+}
+
+
+
+.header-container {
+
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 0 1.5rem;
+
+}
+
+
+
+.brand-logo {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 0.8rem;
+
+    text-decoration: none;
+
+    font-size: 1.5rem;
+
+    font-weight: 500;
+
+    color: var(--text-primary);
+
+}
+
+
+
+.brand-logo i {
+
+    color: var(--youtube-red);
+
+    font-size: 2rem;
+
+}
+
+
+
+.nav-list {
+
+    display: flex;
+
+    gap: 2rem;
+
+    list-style: none;
+
+}
+
+
+
+.nav-link {
+
+    color: var(--text-secondary);
+
+    text-decoration: none;
+
+    font-weight: 400;
+
+    transition: all 0.3s ease;
+
+    padding: 0.5rem 1rem;
+
+    border-radius: 4px;
+
+}
+
+
+
+.nav-link:hover {
+
+    color: var(--text-primary);
+
+    background-color: var(--hover-bg);
+
+}
+
+
+
+.nav-link.active {
+
+    color: var(--youtube-red);
+
+    font-weight: 500;
+
+}
+
+
+
+.event-filter {
+
+    position: relative;
+
+}
+
+
+
+.filter-btn {
+
+    background-color: var(--hover-bg);
+
+    background-color:#ff0000;;
+
+    color: var(--text-primary);
+
+    border: none;
+
+    padding: 0.8rem 1.2rem;
+
+    border-radius: 20px;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 0.8rem;
+
+    transition: background-color 0.3s ease;
+
+}
+
+
+
+.filter-btn:hover {
+
+    background-color: #6f0101;
+
+}
+
+
+
+.filter-dropdown {
+
+    display: none;
+
+    position: absolute;
+
+    right: 0;
+
+    top: 100%;
+
+    background-color: var(--header-bg);
+
+    border: 1px solid #303030;
+
+    border-radius: 8px;
+
+    padding: 0.5rem 0;
+
+    min-width: 180px;
+
+    margin-top: 0.5rem;
+
+}
+
+
+
+.filter-dropdown.show {
+
+    display: block;
+
+}
+
+
+
+.filter-option {
+
+    display: block;
+
+    padding: 0.8rem 1.5rem;
+
+    color: var(--text-secondary);
+
+    text-decoration: none;
+
+    transition: all 0.3s ease;
+
+}
+
+
+
+.filter-option:hover {
+
+    background-color: var(--hover-bg);
+
+    color: var(--text-primary);
+
+}
+
+
+
+/* Responsive Design */
+
+@media (max-width: 768px) {
+
+    .header-container {
+
+        flex-wrap: wrap;
+
+        gap: 1rem;
+
+    }
+
+
+
+    .nav-list {
+
+        gap: 1rem;
+
+    }
+
+
+
+    .nav-link {
+
+        padding: 0.5rem;
+
+    }
+
+
+
+    .brand-logo span {
+
+        display: none;
+
+    }
+
+}
+
+
+
+.event-categories {
+
+    background-color: #111111;
+
+    border-bottom: 1px solid #2a2a2a;
+
+    position: sticky;
+
+    top: 62px; /* Header height */
+
+    z-index: 999;
+
+}
+
+
+
+.categories-container {
+
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+    padding: 0 1.5rem;
+
+}
+
+
+
+.category-nav {
+
+    display: flex;
+
+    gap: 1.5rem;
+
+    overflow-x: auto;
+
+    padding: 1rem 0;
+
+    scrollbar-width: none; /* Firefox */
+
+}
+
+
+
+.category-nav::-webkit-scrollbar {
+
+    display: none; /* Chrome/Safari */
+
+}
+
+
+
+.category-item {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 0.8rem;
+
+    color: #909090;
+
+    text-decoration: none;
+
+    padding: 0.8rem 1.2rem;
+
+    border-radius: 30px;
+
+    background-color: #1a1a1a;
+
+    white-space: nowrap;
+
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    border: 1px solid transparent;
+
+}
+
+
+
+.category-item:hover {
+
+    background-color: #252525;
+
+    color: #ffffff;
+
+    transform: translateY(-2px);
+
+}
+
+
+
+.category-item.active {
+
+    background-color: rgba(255, 0, 0, 0.1);
+
+    color: #ff0000;
+
+    border-color: #ff0000;
+
+    font-weight: 500;
+
+}
+
+
+
+.category-item i {
+
+    font-size: 1.1rem;
+
+}
+
+
+
+/* Responsive Design */
+
+@media (max-width: 768px) {
+
+    .category-nav {
+
+        gap: 1rem;
+
+        padding: 0.8rem 0;
+
+    }
+
+    
+
+    .category-item {
+
+        padding: 0.6rem 1rem;
+
+        font-size: 0.9rem;
+
+    }
+
+    
+
+    .category-item i {
+
+        font-size: 1rem;
+
+    }
+
+}
+
+
+
+
+
+.main-content {
+
+    background-color: rgb(17, 17, 17);
+
+    padding: 3rem 0;
+
+}
+
+
+
+.content-container {
+
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+    padding: 0 1.5rem;
+
+}
+
+
+
+.grid-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 2rem;
+
+}
+
+
+
+.grid-header h2 {
+
+    color: #ffffff;
+
+    font-size: 1.8rem;
+
+}
+
+
+
+.sort-filter {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 1rem;
+
+    color: #909090;
+
+}
+
+
+
+.sort-select {
+
+    background: #242323;
+
+    color: #ffffff;
+
+    border: 1px solid #303030;
+
+    padding: 0.5rem 1rem;
+
+    border-radius: 4px;
+
+}
+
+
+
+.events-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+
+    gap: 2rem;
+
+}
+
+
+
+.event-card {
+
+    background: #1a1a1a;
+
+    border-radius: 12px;
+
+    overflow: hidden;
+
+    transition: transform 0.3s ease;
+
+}
+
+
+
+.event-card:hover {
+
+    transform: translateY(-5px);
+
+}
+
+
+
+.card-header {
+
+    position: relative;
+
+}
+
+
+
+.event-thumb {
+
+    width: 100%;
+
+    height: 200px;
+
+    object-fit: cover;
+
+}
+
+
+
+.event-badge {
+
+    position: absolute;
+
+    top: 1rem;
+
+    left: 1rem;
+
+    background: #ff0000;
+
+    color: white;
+
+    padding: 0.3rem 0.8rem;
+
+    border-radius: 20px;
+
+    font-size: 0.9rem;
+
+}
+
+
+
+.bookmark-btn {
+
+    position: absolute;
+
+    top: 1rem;
+
+    right: 1rem;
+
+    background: rgba(0,0,0,0.7);
+
+    border: none;
+
+    color: white;
+
+    padding: 0.5rem;
+
+    border-radius: 50%;
+
+    cursor: pointer;
+
+}
+
+
+
+.card-body {
+
+    padding: 1.5rem;
+
+}
+
+
+
+.event-meta {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 1rem;
+
+}
+
+
+
+.event-type {
+
+    font-size: 0.9rem;
+
+    padding: 0.3rem 0.8rem;
+
+    border-radius: 4px;
+
+}
+
+
+
+.event-type.workshop { background: rgba(255,0,0,0.1); color: #ff0000; }
+
+.event-type.live { background: rgba(0,255,0,0.1); color: #00ff00; }
+
+
+
+.event-views {
+
+    color: #909090;
+
+    font-size: 0.9rem;
+
+}
+
+
+
+.event-title {
+
+    color: #ffffff;
+
+    margin-bottom: 0.8rem;
+
+    font-size: 1.2rem;
+
+}
+
+
+
+.event-desc {
+
+    color: #909090;
+
+    font-size: 0.95rem;
+
+    margin-bottom: 1.2rem;
+
+    line-height: 1.5;
+
+}
+
+
+
+.event-details {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 1rem;
+
+    margin-bottom: 1.5rem;
+
+}
+
+
+
+.detail-item {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 0.5rem;
+
+    color: #909090;
+
+    font-size: 0.9rem;
+
+}
+
+
+
+.event-cta {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+}
+
+
+
+.cta-button {
+
+    background: #ff0000;
+
+    color: white;
+
+    border: none;
+
+    padding: 0.8rem 1.5rem;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 0.5rem;
+
+    transition: opacity 0.3s;
+
+}
+
+
+
+.cta-button:hover {
+
+    opacity: 0.9;
+
+}
+
+
+
+.participants {
+
+    color: #909090;
+
+    font-size: 0.9rem;
+
+}
+
+
+
+@media (max-width: 768px) {
+
+    .grid-header {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 1rem;
+
+    }
+
+    
+
+    .events-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    
+
+    .event-thumb {
+
+        height: 220px;
+
+    }
+
+}
+
+
+
+.event-sidepanel {
+
+    position: fixed;
+
+    right: -400px;
+
+    top: 0;
+
+    height: 100vh;
+
+    width: 400px;
+
+    background: #1a1a1a;
+
+    box-shadow: -4px 0 15px rgba(0,0,0,0.3);
+
+    transition: right 0.3s ease-in-out;
+
+    z-index: 1001;
+
+    color: white;
+
+}
+
+
+
+.event-sidepanel.active {
+
+    right: 0;
+
+}
+
+
+
+.close-panel {
+
+    position: absolute;
+
+    left: -40px;
+
+    top: 20px;
+
+    background: #ff0000;
+
+    border: none;
+
+    color: white;
+
+    width: 40px;
+
+    height: 40px;
+
+    font-size: 1.5rem;
+
+    cursor: pointer;
+
+    border-radius: 50% 0 0 50%;
+
+}
+
+
+
+.panel-content {
+
+    padding: 2rem;
+
+    height: 100%;
+
+    overflow-y: auto;
+
+}
+
+
+
+.event-main {
+
+    margin-bottom: 2rem;
+
+}
+
+
+
+.event-title {
+
+    color: white;
+
+    margin-bottom: 1rem;
+
+}
+
+
+
+.event-meta {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 1.5rem;
+
+}
+
+
+
+.event-stats {
+
+    display: flex;
+
+    gap: 1.5rem;
+
+    color: #909090;
+
+}
+
+
+
+.host-section {
+
+    background: #252525;
+
+    padding: 1.5rem;
+
+    border-radius: 8px;
+
+    margin-bottom: 2rem;
+
+}
+
+
+
+.host-header {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 1rem;
+
+    margin-bottom: 1rem;
+
+}
+
+
+
+.host-avatar {
+
+    width: 50px;
+
+    height: 50px;
+
+    border-radius: 50%;
+
+}
+
+
+
+.host-info h3 {
+
+    margin: 0;
+
+    font-size: 1.1rem;
+
+}
+
+
+
+.host-info p {
+
+    color: #909090;
+
+    margin: 0;
+
+}
+
+
+
+
+
+.schedule-section {
+
+    margin-bottom: 2rem;
+
+}
+
+
+
+.schedule-list {
+
+    list-style: none;
+
+    padding: 0;
+
+    background: #252525;
+
+    border-radius: 8px;
+
+    padding: 1rem;
+
+}
+
+
+
+.schedule-list li {
+
+    padding: 0.8rem;
+
+    border-bottom: 1px solid #303030;
+
+}
+
+
+
+.schedule-list li:last-child {
+
+    border-bottom: none;
+
+}
+
+
+
+.participants-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+
+    gap: 1rem;
+
+}
+
+
+
+.participant {
+
+    text-align: center;
+
+}
+
+
+
+.participant img {
+
+    width: 50px;
+
+    height: 50px;
+
+    border-radius: 50%;
+
+    margin-bottom: 0.5rem;
+
+}
+
+
+
+.action-buttons {
+
+    position: sticky;
+
+    bottom: 0;
+
+    background: #1a1a1a;
+
+    padding: 1rem 0;
+
+    display: flex;
+
+    gap: 1rem;
+
+    justify-content: center;
+
+}
+
+
+
+.icon-button {
+
+    background: #252525;
+
+    border: none;
+
+    color: white;
+
+    width: 40px;
+
+    height: 40px;
+
+    border-radius: 50%;
+
+    cursor: pointer;
+
+}
+
+
+
+/* Responsive Design */
+
+@media (max-width: 768px) {
+
+    .event-sidepanel {
+
+        width: 100%;
+
+        right: -100%;
+
+    }
+
+    
+
+    .close-panel {
+
+        left: auto;
+
+        right: 20px;
+
+        top: 20px;
+
+        border-radius: 50%;
+
+    }
+
+}
+
+
+
+/* CSS */
+
+.timeline-section {
+
+    background: #0a0a0a;
+
+    padding: 4rem 0;
+
+}
+
+
+
+.timeline-container {
+
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+    padding: 0 1.5rem;
+
+}
+
+
+
+.section-title {
+
+    color: #ffffff;
+
+    text-align: center;
+
+    margin-bottom: 3rem;
+
+    font-size: 2rem;
+
+}
+
+
+
+.timeline {
+
+    position: relative;
+
+    padding: 2rem 0;
+
+}
+
+
+
+.timeline::before {
+
+    content: '';
+
+    position: absolute;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 2px;
+
+    height: 100%;
+
+    background: #303030;
+
+}
+
+
+
+.timeline-item {
+
+    display: flex;
+
+    margin-bottom: 3rem;
+
+    position: relative;
+
+}
+
+
+
+.timeline-date {
+
+    width: 25%;
+
+    padding: 0 2rem;
+
+    text-align: right;
+
+}
+
+
+
+.date-box {
+
+    background: #ff0000;
+
+    color: white;
+
+    padding: 1rem;
+
+    border-radius: 8px;
+
+    display: inline-block;
+
+    text-align: center;
+
+    min-width: 80px;
+
+}
+
+
+
+.date-box .day {
+
+    font-size: 1.5rem;
+
+    font-weight: bold;
+
+    display: block;
+
+}
+
+
+
+.date-box .month {
+
+    font-size: 0.9rem;
+
+    text-transform: uppercase;
+
+}
+
+
+
+.timeline-content {
+
+    width: 75%;
+
+    padding: 1.5rem;
+
+    background: #1a1a1a;
+
+    border-radius: 8px;
+
+    position: relative;
+
+    margin-left: 2rem;
+
+}
+
+
+
+.timeline-content::before {
+
+    content: '';
+
+    position: absolute;
+
+    left: -10px;
+
+    top: 20px;
+
+    width: 20px;
+
+    height: 20px;
+
+    background: #1a1a1a;
+
+    transform: rotate(45deg);
+
+}
+
+
+
+.event-type {
+
+    display: inline-block;
+
+    padding: 0.3rem 0.8rem;
+
+    border-radius: 4px;
+
+    font-size: 0.9rem;
+
+    margin-bottom: 1rem;
+
+}
+
+
+
+.event-type.live { background: rgba(255,0,0,0.1); color: #ff0000; }
+
+.event-type.workshop { background: rgba(0,255,0,0.1); color: #00ff00; }
+
+
+
+.event-title {
+
+    color: #ffffff;
+
+    margin-bottom: 0.8rem;
+
+}
+
+
+
+.event-meta {
+
+    display: flex;
+
+    gap: 1.5rem;
+
+    color: #909090;
+
+    margin-bottom: 1rem;
+
+    font-size: 0.9rem;
+
+}
+
+
+
+.event-desc {
+
+    color: #b0b0b0;
+
+    line-height: 1.6;
+
+    margin-bottom: 1rem;
+
+}
+
+
+
+.reminder-btn {
+
+    background: rgba(255,0,0,0.1);
+
+    color: #ff0000;
+
+    border: 1px solid #ff0000;
+
+    padding: 0.6rem 1.2rem;
+
+    border-radius: 20px;
+
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+
+}
+
+
+
+.reminder-btn:hover {
+
+    background: #ff0000;
+
+    color: white;
+
+}
+
+
+
+/* Responsive Design */
+
+@media (max-width: 768px) {
+
+    .timeline::before {
+
+        left: 20px;
+
+    }
+
+
+
+    .timeline-item {
+
+        flex-direction: column;
+
+    }
+
+
+
+    .timeline-date {
+
+        width: 100%;
+
+        text-align: left;
+
+        padding: 0;
+
+        margin-bottom: 1rem;
+
+    }
+
+
+
+    .date-box {
+
+        display: inline-flex;
+
+        gap: 1rem;
+
+        align-items: center;
+
+        padding: 0.5rem 1rem;
+
+    }
+
+
+
+    .date-box .day {
+
+        font-size: 1.2rem;
+
+    }
+
+
+
+    .timeline-content {
+
+        width: 100%;
+
+        margin-left: 0;
+
+        padding-left: 2.5rem;
+
+    }
+
+
+
+    .timeline-content::before {
+
+        left: 10px;
+
+        top: -10px;
+
+    }
+
+}
+
+
+
+/* CSS */
+
+.community-section {
+
+    background: #0F0F0F;
+
+    padding: 4rem 0;
+
+    border-top: 1px solid #252525;
+
+}
+
+
+
+.section-container {
+
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+    padding: 0 1.5rem;
+
+}
+
+
+
+.section-title {
+
+    color: #FFFFFF;
+
+    text-align: center;
+
+    margin-bottom: 3rem;
+
+    font-size: 2rem;
+
+}
+
+
+
+.interaction-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 2rem;
+
+}
+
+
+
+.section-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 1.5rem;
+
+    padding: 1rem;
+
+    background: #1A1A1A;
+
+    border-radius: 8px;
+
+}
+
+
+
+.section-header h3 {
+
+    color: #FFFFFF;
+
+    margin: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 0.8rem;
+
+}
+
+
+
+.view-all {
+
+    color: #FF0000;
+
+    text-decoration: none;
+
+    font-size: 0.9rem;
+
+}
+
+
+
+.topic-list, .contributor-list, .collab-list {
+
+    display: grid;
+
+    gap: 1.5rem;
+
+}
+
+
+
+.topic-card, .collab-card {
+
+    background: #1A1A1A;
+
+    padding: 1.5rem;
+
+    border-radius: 8px;
+
+    transition: transform 0.3s ease;
+
+}
+
+
+
+.topic-card:hover, .collab-card:hover {
+
+    transform: translateY(-3px);
+
+}
+
+
+
+.topic-meta {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 1rem;
+
+}
+
+
+
+.topic-category {
+
+    font-size: 0.8rem;
+
+    padding: 0.3rem 0.8rem;
+
+    border-radius: 4px;
+
+    text-transform: uppercase;
+
+}
+
+
+
+.topic-category.qna { background: rgba(255,0,0,0.1); color: #FF0000; }
+
+
+
+.topic-stats {
+
+    color: #909090;
+
+    font-size: 0.9rem;
+
+    display: flex;
+
+    gap: 1.5rem;
+
+}
+
+
+
+.topic-title {
+
+    color: #FFFFFF;
+
+    margin-bottom: 0.8rem;
+
+    font-size: 1.1rem;
+
+}
+
+
+
+.topic-footer {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    color: #909090;
+
+    font-size: 0.9rem;
+
+}
+
+
+
+.contributor-list {
+
+    background: #1A1A1A;
+
+    border-radius: 8px;
+
+    padding: 1rem;
+
+}
+
+
+
+.contributor {
+
+    display: grid;
+
+    grid-template-columns: 30px 40px 1fr auto;
+
+    align-items: center;
+
+    gap: 1rem;
+
+    padding: 1rem;
+
+    border-bottom: 1px solid #252525;
+
+}
+
+
+
+.contributor:last-child {
+
+    border-bottom: none;
+
+}
+
+
+
+.avatar {
+
+    width: 40px;
+
+    height: 40px;
+
+    border-radius: 50%;
+
+}
+
+
+
+.name {
+
+    color: #FFFFFF;
+
+}
+
+
+
+.score {
+
+    color: #909090;
+
+    font-size: 0.9rem;
+
+}
+
+
+
+.collab-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-bottom: 1rem;
+
+}
+
+
+
+.collab-type {
+
+    font-size: 0.8rem;
+
+    padding: 0.3rem 0.8rem;
+
+    border-radius: 4px;
+
+}
+
+
+
+.collab-type.gaming { background: rgba(0,255,0,0.1); color: #00FF00; }
+
+
+
+.collab-status {
+
+    color: #FF0000;
+
+    font-size: 0.9rem;
+
+}
+
+
+
+.collab-title {
+
+    color: #FFFFFF;
+
+    margin-bottom: 0.5rem;
+
+}
+
+
+
+.collab-desc {
+
+    color: #909090;
+
+    font-size: 0.9rem;
+
+    line-height: 1.5;
+
+    margin-bottom: 1rem;
+
+}
+
+
+
+.collab-meta {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    color: #909090;
+
+    font-size: 0.8rem;
+
+}
+
+
+
+/* Responsive Design */
+
+@media (max-width: 1024px) {
+
+    .interaction-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    
+
+    .contributor {
+
+        grid-template-columns: 30px 1fr auto;
+
+    }
+
+    
+
+    .contributor .avatar {
+
+        display: none;
+
+    }
+
+}
+
+
+
+@media (max-width: 768px) {
+
+    .section-title {
+
+        font-size: 1.5rem;
+
+    }
+
+    
+
+    .topic-stats {
+
+        gap: 1rem;
+
+    }
+
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        
+
+:root {
+
+      --rainbow-1: #ff0000;
+
+      --rainbow-2: #ff3333;
+
+      --rainbow-3: #ff6666;
+
+      --rainbow-4: #ff9999;
+
+      --rainbow-5: #ffcccc;
+
+      --rainbow-6: #ffeeee;
+
+      --dark-bg: #0a0000;
+
+      --light-text: #ffffff;
+
+      --glow: 0 0 15px;
+
+    }
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            box-sizing: border-box;
+
+        }
+
+        
+
+        body {
+
+            font-family: 'Poppins', sans-serif;
+
+            background: #f5f5f5;
+
+        }
+
+        
+
+        .tribal-footer {
+
+            background: var(--dark-bg);
+
+            color: var(--light-text);
+
+            padding: 5rem 2rem 2rem;
+
+            position: relative;
+
+            overflow: hidden;
+
+            border-top: 3px solid transparent;
+
+            animation: borderGlow 8s infinite alternate;
+
+        }
+
+        
+
+        @keyframes borderGlow {
+
+            0% { border-top-color: var(--rainbow-1); }
+
+            20% { border-top-color: var(--rainbow-2); }
+
+            40% { border-top-color: var(--rainbow-3); }
+
+            60% { border-top-color: var(--rainbow-4); }
+
+            80% { border-top-color: var(--rainbow-5); }
+
+            100% { border-top-color: var(--rainbow-6); }
+
+        }
+
+        
+
+        .color-burst {
+
+            position: absolute;
+
+            top: 0;
+
+            left: 0;
+
+            width: 100%;
+
+            height: 100%;
+
+            background: radial-gradient(circle at 20% 30%, 
+
+                rgba(255, 94, 94, 0.15) 0%, 
+
+                transparent 25%),
+
+                radial-gradient(circle at 80% 20%, 
+
+                rgba(94, 195, 255, 0.15) 0%, 
+
+                transparent 25%),
+
+                radial-gradient(circle at 40% 70%, 
+
+                rgba(158, 94, 255, 0.15) 0%, 
+
+                transparent 25%);
+
+            z-index: 1;
+
+            pointer-events: none;
+
+        }
+
+        
+
+        .footer-content {
+
+            display: grid;
+
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+
+            gap: 3rem;
+
+            max-width: 1300px;
+
+            margin: 0 auto;
+
+            position: relative;
+
+            z-index: 2;
+
+        }
+
+        
+
+        .tribe-brand {
+
+            display: flex;
+
+            flex-direction: column;
+
+        }
+
+        
+
+        .logo-container {
+
+            position: relative;
+
+            margin-bottom: 1.5rem;
+
+        }
+
+        
+
+        .tribe-logo {
+
+            font-size: 2.5rem;
+
+            font-weight: 700;
+
+            background: linear-gradient(45deg, 
+
+                var(--rainbow-1), 
+
+                var(--rainbow-3), 
+
+                var(--rainbow-5), 
+
+                var(--rainbow-6));
+
+            -webkit-background-clip: text;
+
+            background-clip: text;
+
+            color: transparent;
+
+            position: relative;
+
+            display: inline-block;
+
+            animation: logoPulse 4s infinite alternate;
+
+        }
+
+        
+
+        @keyframes logoPulse {
+
+            0% { transform: scale(1); }
+
+            100% { transform: scale(1.05); }
+
+        }
+
+        
+
+        .logo-highlight {
+
+            position: absolute;
+
+            top: -10px;
+
+            left: -10px;
+
+            right: -10px;
+
+            bottom: -10px;
+
+            border-radius: 50%;
+
+            background: linear-gradient(45deg, 
+
+                var(--rainbow-1), 
+
+                var(--rainbow-3), 
+
+                var(--rainbow-5), 
+
+                var(--rainbow-6));
+
+            z-index: -1;
+
+            filter: blur(15px);
+
+            opacity: 0.3;
+
+            animation: highlightRotate 15s linear infinite;
+
+        }
+
+        
+
+        @keyframes highlightRotate {
+
+            0% { transform: rotate(0deg); }
+
+            100% { transform: rotate(360deg); }
+
+        }
+
+        
+
+        .tribe-tagline {
+
+            font-size: 1.1rem;
+
+            line-height: 1.6;
+
+            margin-bottom: 2rem;
+
+            position: relative;
+
+            padding-left: 1.5rem;
+
+        }
+
+        
+
+        .tribe-tagline::before {
+
+            content: '';
+
+            position: absolute;
+
+            left: 0;
+
+            top: 0;
+
+            height: 100%;
+
+            width: 4px;
+
+            background: linear-gradient(to bottom, 
+
+                var(--rainbow-1), 
+
+                var(--rainbow-6));
+
+            border-radius: 2px;
+
+        }
+
+        
+
+        .social-tribe {
+
+            display: flex;
+
+            gap: 1rem;
+
+            flex-wrap: wrap;
+
+        }
+
+        
+
+        .social-spark {
+
+            width: 45px;
+
+            height: 45px;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 1.2rem;
+
+            color: white;
+
+            cursor: pointer;
+
+            transition: all 0.3s ease;
+
+            position: relative;
+
+            overflow: hidden;
+
+            background: rgba(255, 255, 255, 0.1);
+
+            backdrop-filter: blur(5px);
+
+        }
+
+        
+
+        .social-spark::before {
+
+            content: '';
+
+            position: absolute;
+
+            top: -50%;
+
+            left: -50%;
+
+            width: 200%;
+
+            height: 200%;
+
+            background: conic-gradient(
+
+                transparent, 
+
+                transparent, 
+
+                transparent, 
+
+                var(--rainbow-3)
+
+            );
+
+            animation: socialSpin 4s linear infinite;
+
+        }
+
+        
+
+        @keyframes socialSpin {
+
+            0% { transform: rotate(0deg); }
+
+            100% { transform: rotate(360deg); }
+
+        }
+
+        
+
+        .social-spark i {
+
+            position: relative;
+
+            z-index: 2;
+
+            background: var(--dark-bg);
+
+            width: 40px;
+
+            height: 40px;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+        }
+
+        
+
+        .social-spark:hover {
+
+            transform: translateY(-5px) scale(1.1);
+
+            box-shadow: 0 5px 20px rgba(255, 255, 255, 0.2);
+
+        }
+
+        
+
+        .social-spark:nth-child(1):hover { color: var(--rainbow-1); }
+
+        .social-spark:nth-child(2):hover { color: var(--rainbow-3); }
+
+        .social-spark:nth-child(3):hover { color: var(--rainbow-5); }
+
+        .social-spark:nth-child(4):hover { color: var(--rainbow-6); }
+
+        .social-spark:nth-child(5):hover { color: var(--rainbow-2); }
+
+        
+
+        .tribe-links h3 {
+
+            font-size: 1.3rem;
+
+            margin-bottom: 1.5rem;
+
+            position: relative;
+
+            display: inline-block;
+
+        }
+
+        
+
+        .tribe-links h3::after {
+
+            content: '';
+
+            position: absolute;
+
+            bottom: -8px;
+
+            left: 0;
+
+            width: 50px;
+
+            height: 3px;
+
+            background: linear-gradient(to right, 
+
+                var(--rainbow-1), 
+
+                var(--rainbow-6));
+
+            border-radius: 3px;
+
+            animation: underlineGrow 0.5s ease-out forwards;
+
+        }
+
+        
+
+        @keyframes underlineGrow {
+
+            from { width: 0; }
+
+            to { width: 50px; }
+
+        }
+
+        
+
+        .tribe-links ul {
+
+            list-style: none;
+
+        }
+
+        
+
+        .tribe-links li {
+
+            margin-bottom: 1rem;
+
+            position: relative;
+
+            overflow: hidden;
+
+        }
+
+        
+
+        .tribe-links a {
+
+            color: var(--light-text);
+
+            text-decoration: none;
+
+            font-size: 1rem;
+
+            transition: all 0.3s ease;
+
+            display: inline-block;
+
+            position: relative;
+
+            padding-left: 0;
+
+        }
+
+        
+
+        .tribe-links a::before {
+
+            content: '✦';
+
+            position: absolute;
+
+            left: -20px;
+
+            color: var(--rainbow-3);
+
+            opacity: 0;
+
+            transition: all 0.3s ease;
+
+        }
+
+        
+
+        .tribe-links a:hover {
+
+            color: var(--rainbow-5);
+
+            padding-left: 25px;
+
+            transform: translateX(5px);
+
+        }
+
+        
+
+        .tribe-links a:hover::before {
+
+            opacity: 1;
+
+            left: 0;
+
+            animation: sparkle 0.6s ease;
+
+        }
+
+        
+
+        @keyframes sparkle {
+
+            0% { transform: scale(0.5); opacity: 0; }
+
+            50% { transform: scale(1.3); opacity: 1; }
+
+            100% { transform: scale(1); opacity: 1; }
+
+        }
+
+        
+
+        .collab-cta {
+
+            grid-column: span 2;
+
+            background: linear-gradient(135deg, 
+
+                rgba(255, 94, 94, 0.1), 
+
+                rgba(94, 195, 255, 0.1));
+
+            border-radius: 15px;
+
+            padding: 2rem;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            position: relative;
+
+            overflow: hidden;
+
+            border: 1px solid rgba(255, 255, 255, 0.1);
+
+            backdrop-filter: blur(5px);
+
+        }
+
+        
+
+        .collab-cta::before {
+
+            content: '';
+
+            position: absolute;
+
+            top: -50%;
+
+            left: -50%;
+
+            width: 200%;
+
+            height: 200%;
+
+            background: conic-gradient(
+
+                transparent, 
+
+                transparent, 
+
+                transparent, 
+
+                var(--rainbow-5)
+
+            );
+
+            animation: ctaSpin 8s linear infinite;
+
+            opacity: 0.2;
+
+        }
+
+        
+
+        @keyframes ctaSpin {
+
+            0% { transform: rotate(0deg); }
+
+            100% { transform: rotate(360deg); }
+
+        }
+
+        
+
+        .collab-cta h3 {
+
+            font-size: 1.8rem;
+
+            margin-bottom: 1rem;
+
+            background: linear-gradient(to right, 
+
+                var(--rainbow-1), 
+
+                var(--rainbow-3), 
+
+                var(--rainbow-5));
+
+            -webkit-background-clip: text;
+
+            background-clip: text;
+
+            color: transparent;
+
+        }
+
+        
+
+        .collab-cta p {
+
+            margin-bottom: 2rem;
+
+            max-width: 600px;
+
+        }
+
+        
+
+        .join-button {
+
+            background: linear-gradient(45deg, 
+
+                var(--rainbow-1), 
+
+                var(--rainbow-3));
+
+            color: white;
+
+            border: none;
+
+            padding: 0.8rem 2rem;
+
+            border-radius: 50px;
+
+            font-size: 1.1rem;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: all 0.3s ease;
+
+            position: relative;
+
+            overflow: hidden;
+
+            z-index: 2;
+
+            box-shadow: 0 5px 15px rgba(255, 94, 94, 0.4);
+
+        }
+
+        
+
+        .join-button::before {
+
+            content: '';
+
+            position: absolute;
+
+            top: 0;
+
+            left: -100%;
+
+            width: 100%;
+
+            height: 100%;
+
+            background: linear-gradient(90deg, 
+
+                transparent, 
+
+                rgba(255, 255, 255, 0.2), 
+
+                transparent);
+
+            transition: 0.5s;
+
+        }
+
+        
+
+        .join-button:hover {
+
+            transform: translateY(-3px);
+
+            box-shadow: 0 8px 25px rgba(255, 94, 94, 0.6);
+
+        }
+
+        
+
+        .join-button:hover::before {
+
+            left: 100%;
+
+        }
+
+        
+
+        .tribe-bottom {
+
+            max-width: 1300px;
+
+            margin: 3rem auto 0;
+
+            padding-top: 2rem;
+
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            position: relative;
+
+            z-index: 2;
+
+        }
+
+        
+
+        .tribe-copyright {
+
+            font-size: 0.9rem;
+
+            opacity: 0.7;
+
+        }
+
+        
+
+        .tribe-legal {
+
+            display: flex;
+
+            gap: 1.5rem;
+
+            flex-wrap: wrap;
+
+        }
+
+        
+
+        .tribe-legal a {
+
+            color: var(--light-text);
+
+            text-decoration: none;
+
+            font-size: 0.9rem;
+
+            opacity: 0.7;
+
+            transition: all 0.3s ease;
+
+            position: relative;
+
+        }
+
+        
+
+        .tribe-legal a::after {
+
+            content: '';
+
+            position: absolute;
+
+            bottom: -2px;
+
+            left: 0;
+
+            width: 0;
+
+            height: 1px;
+
+            background: var(--rainbow-3);
+
+            transition: width 0.3s ease;
+
+        }
+
+        
+
+        .tribe-legal a:hover {
+
+            opacity: 1;
+
+            color: var(--rainbow-5);
+
+        }
+
+        
+
+        .tribe-legal a:hover::after {
+
+            width: 100%;
+
+        }
+
+        
+
+        /* Floating creator elements */
+
+        .creator-elements {
+
+            position: absolute;
+
+            width: 100%;
+
+            height: 100%;
+
+            top: 0;
+
+            left: 0;
+
+            pointer-events: none;
+
+            z-index: 1;
+
+            overflow: hidden;
+
+        }
+
+        
+
+        .creator-element {
+
+            position: absolute;
+
+            opacity: 0.1;
+
+            font-size: 1.5rem;
+
+            animation: floatElement 15s infinite linear;
+
+        }
+
+        
+
+        @keyframes floatElement {
+
+            0% { transform: translate(0, 0) rotate(0deg); }
+
+            25% { transform: translate(50px, -30px) rotate(90deg); }
+
+            50% { transform: translate(100px, 0) rotate(180deg); }
+
+            75% { transform: translate(50px, 30px) rotate(270deg); }
+
+            100% { transform: translate(0, 0) rotate(360deg); }
+
+        }
+
+        
+
+        /* Responsive design */
+
+        @media (max-width: 992px) {
+
+            .collab-cta {
+
+                grid-column: span 1;
+
+            }
+
+        }
+
+        
+
+        @media (max-width: 768px) {
+
+            .footer-content {
+
+                grid-template-columns: 1fr;
+
+            }
+
+            
+
+            .tribe-bottom {
+
+                flex-direction: column;
+
+                gap: 1rem;
+
+                text-align: center;
+
+            }
+
+            
+
+            .tribe-legal {
+
+                justify-content: center;
+
+            }
+
+        }
+
+
+
+</style>
+
+<body>
+
+    
+
+<header class="main-header">
+
+    <div class="header-container">
+
+        <!-- Logo Section -->
+<!-- 
+        <div class="logo-section">
+            <a href="#" class="brand-logo">
+                <img src="logo1.png" alt="Tube Tribe" class="logo" id="">
+                <span>ube Tribe</span>
+            </a>
+        </div> -->
+        <div class="logo-container">
+            <img src="/logo.jpg" alt="TribeTube Logo" class="logo-img">
+            <span class="logo-text">ube Tribe</span>
+        </div>
+
+
+
+        <!-- Navigation Menu -->
+
+        <nav class="main-nav">
+
+            <ul class="nav-list">
+
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+
+                <li class="nav-item"><a href="events.html" class="nav-link">Events</a></li>
+
+                <li class="nav-item"><a href="creators.html" class="nav-link">Creators</a></li>
+
+                <li class="nav-item"><a href="forum.html" class="nav-link">Forum</a></li>
+
+                <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+
+            </ul>
+
+        </nav>
+
+
+
+        <!-- Event Filter Dropdown -->
+
+        <div class="event-filter">
+
+            <button class="filter-btn">
+
+                All Events
+
+                <i class="fas fa-chevron-down"></i>
+
+            </button>
+
+            <div class="filter-dropdown">
+
+                <a href="live-streams.html" class="filter-option">Live Streams</a>
+
+                <a href="workshops.html" class="filter-option">Workshops</a>
+
+                <a href="meetup.html" class="filter-option">Meetups</a>
+
+                <a href="challenges.html" class="filter-option">Challenges</a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<section class="event-categories">
+
+    <div class="categories-container">
+
+        <nav class="category-nav">
+
+            <a href="#" class="category-item active">
+
+                <i class="fas fa-video"></i>
+
+                Live Streams
+
+            </a>
+
+            <a href="#" class="category-item">
+
+                <i class="fas fa-users"></i>
+
+                Meetups
+
+            </a>
+
+            <a href="#" class="category-item">
+
+                <i class="fas fa-chalkboard-teacher"></i>
+
+                Workshops
+
+            </a>
+
+            <a href="#" class="category-item">
+
+                <i class="fas fa-trophy"></i>
+
+                Challenges
+
+            </a>
+
+            <a href="#" class="category-item">
+
+                <i class="fas fa-handshake"></i>
+
+                Collaborations
+
+            </a>
+
+            <a href="#" class="category-item">
+
+                <i class="fas fa-award"></i>
+
+                Awards
+
+            </a>
+
+        </nav>
+
+    </div>
+
+</section>
+
+
+
+<section class="main-content">
+
+    <div class="content-container">
+
+        <div class="grid-header">
+
+            <h2>Upcoming Events</h2>
+
+            <div class="sort-filter">
+
+                <span>Sort by:</span>
+
+                <select class="sort-select">
+
+                    <option>Newest First</option>
+
+                    <option>Popularity</option>
+
+                    <option>Date</option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="events-grid">
+
+            <!-- Event Card 1 -->
+
+            <article class="event-card">
+
+                <div class="card-header">
+
+                    <img src="/event2.jpg" alt="Live Stream" class="event-thumb">
+
+                    <span class="event-badge live">Live Now</span>
+
+                    <button class="bookmark-btn"><i class="far fa-bookmark"></i></button>
+
+                </div>
+
+                <div class="card-body">
+
+                    <div class="event-meta">
+
+                        <span class="event-type workshop">Workshop</span>
+
+                        <span class="event-views"><i class="fas fa-eye"></i> 9.2K</span>
+
+                    </div>
+
+                    <h3 class="event-title">Advanced gaming with top YouTube creators </h3>
+
+                    <p class="event-desc">Learn professional editing techniques from top YouTube creators...</p>
+
+                    <div class="event-details">
+
+                        <div class="detail-item">
+
+                            <i class="fas fa-calendar-day"></i>
+
+                            <span>15 Nov 2025</span>
+
+                        </div>
+
+                        <div class="detail-item">
+
+                            <i class="fas fa-clock"></i>
+
+                            <span>8:00 PM UTC</span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="event-cta">
+
+                        <button class="cta-button"><i class="fas fa-video"></i> Join Stream</button>
+
+                        <span class="participants">+324 Joined</span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+
+            <article class="event-card">
+
+                <div class="card-header">
+
+                    <img src="/event1.jpg" alt="Live Stream" class="event-thumb">
+
+                    <span class="event-badge live">Live Now</span>
+
+                    <button class="bookmark-btn"><i class="far fa-bookmark"></i></button>
+
+                </div>
+
+                <div class="card-body">
+
+                    <div class="event-meta">
+
+                        <span class="event-type workshop">Workshop</span>
+
+                        <span class="event-views"><i class="fas fa-eye"></i> 3.5K</span>
+
+                    </div>
+
+                    <h3 class="event-title">Advanced Video Editing Masterclass</h3>
+
+                    <p class="event-desc">Learn professional live-stream techniques from top YouTube creators...</p>
+
+                    <div class="event-details">
+
+                        <div class="detail-item">
+
+                            <i class="fas fa-calendar-day"></i>
+
+                            <span>15 oct 2023</span>
+
+                        </div>
+
+                        <div class="detail-item">
+
+                            <i class="fas fa-clock"></i>
+
+                            <span>3:00 PM UTC</span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="event-cta">
+
+                        <button class="cta-button"><i class="fas fa-video"></i> Join Stream</button>
+
+                        <span class="participants">+723 Joined</span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+
+            <article class="event-card">
+
+                <div class="card-header">
+
+                    <img src="/event3.jpg" alt="Live Stream" class="event-thumb">
+
+                    <span class="event-badge live">Live Now</span>
+
+                    <button class="bookmark-btn"><i class="far fa-bookmark"></i></button>
+
+                </div>
+
+                <div class="card-body">
+
+                    <div class="event-meta">
+
+                        <span class="event-type workshop">Workshop</span>
+
+                        <span class="event-views"><i class="fas fa-eye"></i> 8.3K</span>
+
+                    </div>
+
+                    <h3 class="event-title">Advanced VR Gaming Masterclass</h3>
+
+                    <p class="event-desc">Learn professional VR gamplay techniques from top YouTube creators...</p>
+
+                    <div class="event-details">
+
+                        <div class="detail-item">
+
+                            <i class="fas fa-calendar-day"></i>
+
+                            <span>9 Nov 2025</span>
+
+                        </div>
+
+                        <div class="detail-item">
+
+                            <i class="fas fa-clock"></i>
+
+                            <span>7:00 PM UTC</span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="event-cta">
+
+                        <button class="cta-button"><i class="fas fa-video"></i> Join Stream</button>
+
+                        <span class="participants">+589 Joined</span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- Repeat event cards with different content -->
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<aside class="event-sidepanel">
+
+    <button class="close-panel">&times;</button>
+
+    <div class="panel-content">
+
+        <!-- Main Event Details -->
+
+        <div class="event-main">
+
+            <h2 class="event-title">Advanced Video Editing Masterclass</h2>
+
+            <div class="event-meta">
+
+                <span class="event-type workshop">Workshop</span>
+
+                <div class="event-stats">
+
+                    <span><i class="fas fa-eye"></i> 1.2K Watching</span>
+
+                    <span><i class="fas fa-users"></i> 324 Participants</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- Host Details -->
+
+        <div class="host-section">
+
+            <div class="host-header">
+
+                <img src="host-avatar.jpg" alt="Host Avatar" class="host-avatar">
+
+                <div class="host-info">
+
+                    <h3>John Creator</h3>
+
+                    <p>500K Subscribers</p>
+
+                </div>
+
+                <button class="subscribe-btn">Subscribe</button>
+
+            </div>
+
+            <p class="host-bio">Professional video editor with 10+ years experience creating content for top YouTube channels...</p>
+
+        </div>
+
+
+
+        <!-- Schedule & Details -->
+
+        <div class="schedule-section">
+
+            <h3><i class="fas fa-calendar-alt"></i> Event Schedule</h3>
+
+            <ul class="schedule-list">
+
+                <li>8:00 PM - Introduction</li>
+
+                <li>8:15 PM - Editing Techniques</li>
+
+                <li>9:00 PM - Live Q&A</li>
+
+            </ul>
+
+        </div>
+
+
+
+        <!-- Participants -->
+
+        <div class="participants-section">
+
+            <h3><i class="fas fa-users"></i> Participants</h3>
+
+            <div class="participants-grid">
+
+                <div class="participant">
+
+                    <img src="user-avatar.jpg" alt="Participant">
+
+                    <span>User123</span>
+
+                </div>
+
+                <!-- More participants -->
+
+            </div>
+
+        </div>
+
+
+
+        <!-- Action Buttons -->
+
+        <div class="action-buttons">
+
+            <button class="cta-button"><i class="fas fa-video"></i> Join Event</button>
+
+            <button class="icon-button" title="Add to Calendar"><i class="fas fa-calendar-plus"></i></button>
+
+            <button class="icon-button" title="Share"><i class="fas fa-share"></i></button>
+
+        </div>
+
+    </div>
+
+</aside>
+
+
+
+<section class="timeline-section">
+
+    <div class="timeline-container">
+
+        <h2 class="section-title">Upcoming Events Timeline</h2>
+
+        
+
+        <div class="timeline">
+
+            <!-- Timeline Item 1 -->
+
+            <div class="timeline-item">
+
+                <div class="timeline-date">
+
+                    <div class="date-box">
+
+                        <span class="day">15</span>
+
+                        <span class="month">NOV</span>
+
+                    </div>
+
+                </div>
+
+                <div class="timeline-content">
+
+                    <div class="event-type live">Live Stream</div>
+
+                    <h3 class="event-title">Creator Q&A Session</h3>
+
+                    <div class="event-meta">
+
+                        <span><i class="fas fa-clock"></i> 8:00 PM UTC</span>
+
+                        <span><i class="fas fa-users"></i> 1.2K Interested</span>
+
+                    </div>
+
+                    <p class="event-desc">Join our live discussion with top creators about platform updates...</p>
+
+                    <button class="reminder-btn"><i class="fas fa-bell"></i> Set Reminder</button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Timeline Item 2 -->
+
+            <div class="timeline-item">
+
+                <div class="timeline-date">
+
+                    <div class="date-box">
+
+                        <span class="day">17</span>
+
+                        <span class="month">NOV</span>
+
+                    </div>
+
+                </div>
+
+                <div class="timeline-content">
+
+                    <div class="event-type workshop">Workshop</div>
+
+                    <h3 class="event-title">Thumbnail Design Masterclass</h3>
+
+                    <div class="event-meta">
+
+                        <span><i class="fas fa-clock"></i> 3:00 PM UTC</span>
+
+                        <span><i class="fas fa-users"></i> 890 Interested</span>
+
+                    </div>
+
+                    <p class="event-desc">Learn professional thumbnail design techniques from experts...</p>
+
+                    <button class="reminder-btn"><i class="fas fa-bell"></i> Set Reminder</button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Add more timeline items -->
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- HTML -->
+
+<section class="community-section">
+    <div class="section-container">
+        <h2 class="section-title">Community Hub</h2>
+        <div class="interaction-grid">
+
+            <!-- Forum Topics -->
+
+            <div class="forum-topics">
+                <div class="section-header">
+                    <h3><i class="fas fa-comments"></i> Hot Topics</h3>
+                    <a href="#" class="view-all">View All →</a>
+                </div>
+                <div class="topic-list">
+                    <article class="topic-card">
+                        <div class="topic-meta">
+                            <span class="topic-category qna">Q&A</span>
+                            <span class="topic-stats">
+                                <i class="fas fa-comment"></i> 142
+                                <i class="fas fa-eye"></i> 2.1K
+                            </span>
+                        </div>
+                        <h4 class="topic-title">Best practices for community posts?</h4>
+                        <div class="topic-footer">
+                            <span class="author">Posted by: CreatorExpert</span>
+                            <span class="time">2h ago</span>
+                        </div>
+                    </article>
+                    <!-- More topic cards -->
+                </div>
+            </div>
+            <!-- Leaderboard -->
+            <div class="leaderboard">
+                <div class="section-header">
+                    <h3><i class="fas fa-trophy"></i> Top Contributors</h3>
+                </div>
+                <ol class="contributor-list">
+                    <li class="contributor">
+                        <span class="rank">1</span>
+                        <img src="/event4.jpg" alt="Contributor" class="avatar">
+                        <span class="name">VideoPro</span>
+                        <span class="score">1.2K points</span>
+                    </li>
+                    <!-- More contributors -->
+                </ol>
+            </div>
+            <!-- Collaboration Board -->
+            <div class="collab-board">
+                <div class="section-header">
+                    <h3><i class="fas fa-handshake"></i> Collaborations</h3>
+                </div>
+                <div class="collab-list"></div>
+                    <div class="collab-card">
+                        <div class="collab-header">
+                            <span class="collab-type gaming">Gaming</span>
+                            <span class="collab-status">Looking for Editor</span>
+                        </div>
+                        <h4 class="collab-title">Need help with FPS montage</h4>
+                        <p class="collab-desc">Seeking experienced editor for weekly gaming highlights...</p>
+                        <div class="collab-meta">
+                            <span class="author">@GameMaster</span>
+                            <span class="time">5h ago</span>
+                        </div>
+                    </div>
+                    <!-- More collaboration cards -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<footer class="tribal-footer">
+    <div class="color-burst"></div>
+    <div class="creator-elements">
+        <i class="creator-element fas fa-video" style="top: 15%; left: 10%; animation-delay: 0s; color: var(--rainbow-1);"></i>
+        <i class="creator-element fas fa-camera" style="top: 25%; right: 15%; animation-delay: 2s; color: var(--rainbow-3);"></i>
+        <i class="creator-element fas fa-lightbulb" style="bottom: 20%; left: 20%; animation-delay: 4s; color: var(--rainbow-5);"></i>
+        <i class="creator-element fas fa-users" style="bottom: 15%; right: 15%; animation-delay: 6s; color: var(--rainbow-6);"></i>
+        <i class="creator-element fas fa-film" style="top: 40%; left: 50%; animation-delay: 8s; color: var(--rainbow-2);"></i>
+    </div>
+    <div class="footer-content">
+        <div class="tribe-brand">
+            <div class="logo-container">
+                <div class="logo-highlight"></div>
+                <div class="tribe-logo">Tube Tribe</div>
+            </div>
+            <p class="tribe-tagline">Where creators unite to connect, create, and collaborate. Build your audience and create magic together.</p>
+            <div class="social-tribe">
+                <div class="social-spark"><i class="fab fa-youtube"></i></div>
+                <div class="social-spark"><i class="fab fa-instagram"></i></div>
+                <div class="social-spark"><i class="fab fa-tiktok"></i></div>
+                <div class="social-spark"><i class="fab fa-discord"></i></div>
+                <div class="social-spark"><i class="fab fa-twitter"></i></div>
+            </div>
+        </div>
+        <div class="tribe-links">
+            <h3>Create</h3>
+            <ul>
+                <li><a href="#">Collaboration Hub</a></li>
+                <li><a href="#">Content Challenges</a></li>
+                <li><a href="#">Video Templates</a></li>
+                <li><a href="#">Editing Tools</a></li>
+                <li><a href="#">Creator Resources</a></li>
+            </ul>
+        </div>
+        <div class="tribe-links">
+            <h3>Connect</h3>
+            <ul>
+                <li><a href="#">Find Creators</a></li>
+                <li><a href="#">Tribe Events</a></li>
+                <li><a href="#">Discussion Forums</a></li>
+                <li><a href="#">Mentorship Program</a></li>
+                <li><a href="#">Live Streams</a></li>
+            </ul>
+        </div>
+        <div class="tribe-links">
+            <h3>Grow</h3>
+            <ul>
+                <li><a href="#">Analytics Dashboard</a></li>
+                <li><a href="#">Monetization Tips</a></li>
+                <li><a href="#">Audience Building</a></li>
+                <li><a href="#">Sponsorship Deals</a></li>
+                <li><a href="#">Success Stories</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="tribe-bottom">
+        <div class="tribe-copyright">© 2023 Tube Tribe. All rights reserved.</div>
+        <div class="tribe-legal">
+            <a href="#">Terms of Service</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Community Guidelines</a>
+            <a href="#">Cookie Policy</a>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

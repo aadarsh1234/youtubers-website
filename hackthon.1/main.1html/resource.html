@@ -1,0 +1,601 @@
+x<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>YouTube Resources</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #0a0000;
+      color: #f1f5f9;
+      padding: 40px 20px;
+    }
+    
+    h1 {
+      text-align: center;
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: #ff0000;
+    }
+    
+    .subtitle {
+      text-align: center;
+      font-size: 16px;
+      color: #c4c4c4;
+      margin-bottom: 40px;
+    }
+    
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    
+    .card {
+      background-color: #1a0000;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(255, 0, 0, 0.1);
+      padding: 25px;
+      text-align: center;
+      transition: 0.3s ease;
+      border: 1px solid #3a0000;
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 16px rgba(255, 0, 0, 0.3);
+      border-color: #ff0000;
+    }
+    
+    .card img {
+      width: 50px;
+      margin-bottom: 15px;
+      filter: hue-rotate(320deg) saturate(200%);
+    }
+    
+    .card h3 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #ff3333;
+    }
+    
+    .card p {
+      font-size: 14px;
+      color: #e0e0e0;
+      margin-bottom: 20px;
+      min-height: 45px;
+    }
+    
+    .card button {
+      background-color: #ff0000;
+      color: #ffffff;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.2s ease;
+    }
+    
+    .card button:hover {
+      background-color: #c50000;
+      transform: scale(1.05);
+    }
+    
+    :root {
+      --rainbow-1: #ff0000;
+      --rainbow-2: #ff3333;
+      --rainbow-3: #ff6666;
+      --rainbow-4: #ff9999;
+      --rainbow-5: #ffcccc;
+      --rainbow-6: #ffeeee;
+      --dark-bg: #0a0000;
+      --light-text: #ffffff;
+      --glow: 0 0 15px;
+    }
+
+    .tribal-footer {
+      background: var(--dark-bg);
+      color: var(--light-text);
+      padding: 40px 20px;
+      margin-top: 60px;
+      position: relative;
+      overflow: hidden;
+      border-top: 3px solid transparent;
+      animation: borderGlow 8s infinite alternate;
+    }
+    
+    @keyframes borderGlow {
+      0% { border-top-color: var(--rainbow-1); }
+      20% { border-top-color: var(--rainbow-2); }
+      40% { border-top-color: var(--rainbow-3); }
+      60% { border-top-color: var(--rainbow-4); }
+      80% { border-top-color: var(--rainbow-5); }
+      100% { border-top-color: var(--rainbow-6); }
+    }
+    
+    .color-burst {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 20% 30%, 
+          rgba(255, 0, 0, 0.15) 0%, 
+          transparent 25%),
+          radial-gradient(circle at 80% 20%, 
+          rgba(255, 51, 51, 0.15) 0%, 
+          transparent 25%),
+          radial-gradient(circle at 40% 70%, 
+          rgba(255, 102, 102, 0.15) 0%, 
+          transparent 25%);
+      z-index: 1;
+      pointer-events: none;
+    }
+    
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .tribe-brand {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .logo-container {
+      position: relative;
+      margin-bottom: 1.5rem;
+    }
+    
+    .tribe-logo {
+      font-size: 2rem;
+      font-weight: 700;
+      background: linear-gradient(45deg, 
+          var(--rainbow-1), 
+          var(--rainbow-3), 
+          var(--rainbow-5), 
+          var(--rainbow-6));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      position: relative;
+      display: inline-block;
+      animation: logoPulse 4s infinite alternate;
+    }
+    
+    @keyframes logoPulse {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.05); }
+    }
+    
+    .logo-highlight {
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      right: -10px;
+      bottom: -10px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, 
+          var(--rainbow-1), 
+          var(--rainbow-3), 
+          var(--rainbow-5), 
+          var(--rainbow-6));
+      z-index: -1;
+      filter: blur(15px);
+      opacity: 0.3;
+      animation: highlightRotate 15s linear infinite;
+    }
+
+    
+    @keyframes highlightRotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    .tribe-tagline {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+    
+    .tribe-tagline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 4px;
+      background: linear-gradient(to bottom, 
+          var(--rainbow-1), 
+          var(--rainbow-6));
+      border-radius: 2px;
+    }
+    
+    .social-tribe {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    
+    .social-spark {
+      width: 40px;
+      height: 45px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      color: #f1f1f1;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      background: rgba(255, 0, 0, 0.1);
+      backdrop-filter: blur(5px);
+    }
+    
+    .social-spark::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(
+          transparent, 
+          transparent, 
+          transparent, 
+          var(--rainbow-1)
+      );
+      animation: socialSpin 4s linear infinite;
+    }
+    
+    @keyframes socialSpin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    .social-spark i {
+      position: relative;
+      z-index: 2;
+      background: var(--dark-bg);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    } 
+    
+    .social-spark:hover {
+      transform: translateY(-5px) scale(1.1);
+      box-shadow: 0 5px 20px rgba(255, 0, 0, 0.4);
+      color: #ff0000;
+    }
+    
+    .tribe-links h3 {
+      margin-bottom: 1rem;
+      position: relative;
+      display: inline-block;
+      color: #ff0000;
+    }
+    
+    .tribe-links h3::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: linear-gradient(to right, 
+          var(--rainbow-1), 
+          var(--rainbow-3));
+      border-radius: 3px;
+      animation: underlineGrow 0.5s ease-out forwards;
+    }
+    
+    @keyframes underlineGrow {
+      from { width: 0; }
+      to { width: 50px; }
+    }
+    
+    .tribe-links ul {
+      list-style: none;
+    }
+    
+    .tribe-links li {
+      margin-bottom: 6px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .tribe-links a {
+      color: var(--light-text);
+      text-decoration: none;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      display: inline-block;
+      position: relative;
+      padding-left: 0;
+    }
+    
+    .tribe-links a::before {
+      content: '✦';
+      position: absolute;
+      left: -20px;
+      color: var(--rainbow-1);
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+    
+    .tribe-links a:hover {
+      color: var(--rainbow-1);
+      padding-left: 25px;
+      transform: translateX(5px);
+    }
+    
+    .tribe-links a:hover::before {
+      opacity: 1;
+      left: 0;
+      animation: sparkle 0.6s ease;
+    }
+    
+    @keyframes sparkle {
+      0% { transform: scale(0.5); opacity: 0; }
+      50% { transform: scale(1.3); opacity: 1; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    
+    .tribe-bottom {
+      max-width: 1200px;
+      margin: 1rem auto 0;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255, 0, 0, 0.2);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .tribe-copyright {
+      font-size: 0.7rem;
+      opacity: 0.7;
+    }
+    
+    .tribe-legal {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    
+    .tribe-legal a {
+      color: var(--light-text);
+      text-decoration: none;
+      font-size: 0.7rem;
+      opacity: 0.7;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    
+    .tribe-legal a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--rainbow-1);
+      transition: width 0.3s ease;
+    }
+    
+    .tribe-legal a:hover {
+      opacity: 1;
+      color: var(--rainbow-1);
+    }
+    
+    .tribe-legal a:hover::after {
+      width: 100%;
+    }
+    
+    .creator-elements {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: 1;
+      overflow: hidden;
+    }
+    
+    .creator-element {
+      position: absolute;
+      opacity: 0.1;
+      font-size: 1.5rem;
+      animation: floatElement 15s infinite linear;
+    }
+    
+    @keyframes floatElement {
+      0% { transform: translate(0, 0) rotate(0deg); }
+      25% { transform: translate(50px, -30px) rotate(90deg); }
+      50% { transform: translate(100px, 0) rotate(180deg); }
+      75% { transform: translate(50px, 30px) rotate(270deg); }
+      100% { transform: translate(0, 0) rotate(360deg); }
+    }
+    
+    @media (max-width: 992px) {
+      .collab-cta {
+        grid-column: span 1;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .footer-content {
+        grid-template-columns: 1fr;
+      }
+      
+      .tribe-bottom {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+      
+      .tribe-legal {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Resources</h1>
+  <p class="subtitle">Helpful tools, guides, and inspiration for YouTubers.</p>
+
+  <div class="grid">
+    <div class="card">
+      <img src="https://img.icons8.com/color/96/video-editing.png" alt="Video Editing Icon">
+      <h3>Video Editing Tools</h3>
+      <p>Free and paid video editors for creating your content</p>
+      <button>Learn More</button>
+    </div>
+    <div class="card">
+      <img src="https://img.icons8.com/color/96/image.png" alt="Thumbnail Icon">
+      <h3>Thumbnail Makers</h3>
+      <p>Online tools for designing eye-catching thumbnails</p>
+      <button>Learn More</button>
+    </div>
+    <div class="card">
+      <img src="https://img.icons8.com/color/96/combo-chart--v1.png" alt="SEO Icon">
+      <h3>SEO & Analytics Tools</h3>
+      <p>Optimize your videos and track their performance</p>
+      <button>Access Now</button>
+    </div>
+    <div class="card">
+      <img src="https://img.icons8.com/color/96/musical-notes.png" alt="Music Icon">
+      <h3>Copyright-Free Music Libraries</h3>
+      <p>Sources for music and sound effects you can safely use</p>
+      <button>Access Now</button>
+    </div>
+    <div class="card">
+      <img src="https://img.icons8.com/color/96/compass.png" alt="Trending Icon">
+      <h3>Trending Content Ideas</h3>
+      <p>Discover popular and trending topics for your videos</p>
+      <button>Learn More</button>
+    </div>
+    <div class="card">
+      <img src="https://img.icons8.com/color/96/graduation-cap--v1.png" alt="Courses Icon">
+      <h3>Learning Courses</h3>
+      <p>Online courses to improve your YouTube skills</p>
+      <button>Learn More</button>
+    </div>
+  </div>
+
+  <footer class="tribal-footer">
+    <div class="color-burst"></div>
+    
+    <div class="creator-elements">
+      <i class="creator-element fas fa-video" style="top: 15%; left: 10%; animation-delay: 0s; color: var(--rainbow-1);"></i>
+      <i class="creator-element fas fa-camera" style="top: 25%; right: 15%; animation-delay: 2s; color: var(--rainbow-2);"></i>
+      <i class="creator-element fas fa-lightbulb" style="bottom: 20%; left: 20%; animation-delay: 4s; color: var(--rainbow-3);"></i>
+      <i class="creator-element fas fa-users" style="bottom: 15%; right: 15%; animation-delay: 6s; color: var(--rainbow-1);"></i>
+      <i class="creator-element fas fa-film" style="top: 40%; left: 50%; animation-delay: 8s; color: var(--rainbow-2);"></i>
+    </div>
+    
+    <div class="footer-content">
+      <div class="tribe-brand">
+        <div class="logo-container">
+          <div class="logo-highlight"></div>
+          <div class="tribe-logo">Tube Tribe</div>
+        </div>
+        <p class="tribe-tagline">Where creators unite to connect, create, and collaborate. Build your audience and create magic together.</p>
+        <div class="social-tribe">
+          <div class="social-spark"><i class="fab fa-youtube"></i></div>
+          <div class="social-spark"><i class="fab fa-instagram"></i></div>
+          <div class="social-spark"><i class="fab fa-tiktok"></i></div>
+          <div class="social-spark"><i class="fab fa-discord"></i></div>
+          <div class="social-spark"><i class="fab fa-twitter"></i></div>
+        </div>
+      </div>
+      
+      <div class="tribe-links">
+        <h3>Create</h3>
+        <ul>
+          <li><a href="#">Collaboration Hub</a></li>
+          <li><a href="#">Content Challenges</a></li>
+          <li><a href="#">Video Templates</a></li>
+          <li><a href="#">Editing Tools</a></li>
+          <li><a href="#">Creator Resources</a></li>
+        </ul>
+      </div>
+      
+      <div class="tribe-links">
+        <h3>Connect</h3>
+        <ul>
+          <li><a href="#">Find Creators</a></li>
+          <li><a href="#">Tribe Events</a></li>
+          <li><a href="#">Discussion Forums</a></li>
+          <li><a href="#">Mentorship Program</a></li>
+          <li><a href="#">Live Streams</a></li>
+        </ul>
+      </div>
+      
+      <div class="tribe-links">
+        <h3>Grow</h3>
+        <ul>
+          <li><a href="#">Analytics Dashboard</a></li>
+          <li><a href="#">Monetization Tips</a></li>
+          <li><a href="#">Audience Building</a></li>
+          <li><a href="#">Sponsorship Deals</a></li>
+          <li><a href="#">Success Stories</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="tribe-bottom">
+      <div class="tribe-copyright">© 2025 Tube Tribe. All rights reserved.</div>
+      <div class="tribe-legal">
+        <a href="#">Terms of Service</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Community Guidelines</a>
+        <a href="#">Cookie Policy</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Hover effect for all clickable elements
+    document.querySelectorAll('a, button, [onclick]').forEach(element => {
+      element.style.cursor = 'pointer';
+      element.addEventListener('mouseenter', () => {
+        element.style.transform = 'translateY(-2px)';
+      });
+      element.addEventListener('mouseleave', () => {
+        element.style.transform = 'translateY(0)';
+      });
+    });
+  </script>
+</body>
+</html>

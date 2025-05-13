@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Established Creator Dashboard | Tube Tribe</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            primary: #6c5ce7;
+            --secondary: #a29bfe;
+            --dark: #2d3436;
+            --light: #f5f6fa;
+            --success: #00b894;
+            --warning: #fdcb6e;
+        
+            --rainbow-1: #ff0000;
+            --rainbow-2: #ff3333;
+            --rainbow-3: #ff6666;
+            --rainbow-4: #ff9999;
+            --rainbow-5: #ffcccc;
+            --rainbow-6: #ffeeee;
+           --dark-bg: #0a0000;
+           --light-text: #ffffff;
+           --glow: 0 0 15px;
+    }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: black;
+            color:white;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color:black;
+            box-shadow: 0 8px 20px rgba(255, 0, 60, 0.6); ;
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            font-size: 32px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .user-menu {
+            display: flex;
+            align-items: center;
+        }
+        
+        .user-menu .btn {
+            margin-left: 15px;
+        }
+        
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color:#ff0000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            margin-left: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .user-avatar:hover {
+            transform: scale(1.1);
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            outline: none;
+        }
+        
+        .btn-primary {
+            background-color: #ff0000;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #ff0000;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 0, 60, 0.6);;
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .btn-success {
+            background-color: var(--success);
+            color: white;
+        }
+        
+        .btn-success:hover {
+            background-color: #00a884;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 184, 148, 0.3);
+        }
+        
+        /* Dashboard Layout */
+        .dashboard {
+            display: flex;
+            padding-top: 80px;
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            width: 250px;
+            background:black;
+            height: calc(100vh - 80px);
+            position: fixed;
+            box-shadow: 0 8px 20px rgba(255, 0, 60, 0.6);;
+            padding: 30px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .sidebar-menu {
+            list-style: none;
+        }
+        
+        .sidebar-menu li {
+            margin-bottom: 5px;
+        }
+        
+        .sidebar-menu a {
+            display: flex;
+            align-items: center;
+            padding: 12px 25px;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+        
+        .sidebar-menu a:hover, .sidebar-menu a.active {
+           
+        
+            background: transparent;
+            border-color: #ff0000;
+            box-shadow: 0 8px 20px rgba(255, 0, 60, 0.6);;
+            border-left: 3px solid #ff0000;
+            color:white;
+        }
+        
+        .sidebar-menu a i {
+            margin-right: 10px;
+            font-size: 18px;
+        }
+        
+        .sidebar-menu h3 {
+            padding: 15px 25px;
+            color: white;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 20px;
+        }
+        
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            margin-left: 250px;
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+        
+        .welcome-banner {
+            background: linear-gradient(135deg, #ff0000 0%, rgb(235, 96, 96) 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .welcome-banner::before {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            top: -50px;
+            right: -50px;
+        }
+        
+        .welcome-banner h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            position: relative;
+        }
+        
+        .welcome-banner p {
+            max-width: 600px;
+            opacity: 0.9;
+            position: relative;
+        }
+        
+        .stats-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            background:black;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(253, 251, 252, 0.6);;
+            transition: all 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .stat-card h3 {
+            color: #636e72;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .stat-card .value {
+            font-size: 28px;
+            font-weight: 700;
+            color:white;
+        }
+        
+        .stat-card .change {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        
+        .change.positive {
+            color: var(--success);
+        }
+        
+        .change.negative {
+            color: #d63031;
+        }
+        
+        .change i {
+            margin-right: 5px;
+        }
+        
+        .section-title {
+            margin: 30px 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .section-title h2 {
+            font-size: 22px;
+        }
+        
+        /* Ideas Grid */
+        .ideas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .idea-card {
+            background: black;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow:0 8px 20px rgba(255, 0, 60, 0.6);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .idea-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .idea-image {
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .idea-content {
+            padding: 20px;
+        }
+        
+        .idea-creator {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .creator-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            overflow: hidden;
+        }
+        
+        .creator-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .idea-content h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .idea-content p {
+            color: beige;
+            font-size: 14px;
+            margin-bottom: 15px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .idea-stats {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #f1f1f1;
+        }
+        
+        .idea-earnings {
+            font-weight: 700;
+            color: var(--success);
+            font-size: 18px;
+        }
+        
+        .idea-success-rate {
+            display: flex;
+            align-items: center;
+            color: var(--success);
+            font-size: 14px;
+        }
+        
+        .idea-success-rate i {
+            margin-right: 5px;
+        }
+        
+        .btn-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .btn-icon i {
+            margin-right: 8px;
+        }
+        
+        /* New Idea Form */
+        .new-idea-form {
+            background:black;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 8px 20px rgba(255, 0, 60, 0.6); ;
+            margin-bottom: 40px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+            
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+           
+        }
+        
+        
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.2);
+            outline: none;
+        }
+        
+        .form-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .sidebar {
+                width: 80px;
+                overflow: hidden;
+            }
+            
+            .sidebar-menu a span {
+                display: none;
+            }
+            
+            .sidebar-menu a i {
+                margin-right: 0;
+                font-size: 20px;
+            }
+            
+            .sidebar-menu h3 {
+                display: none;
+            }
+            
+            .main-content {
+                margin-left: 80px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+                position: fixed;
+                z-index: 90;
+                top: 80px;
+                height: calc(100vh - 80px);
+                width: 250px;
+            }
+            
+            .sidebar.active {
+                transform: translateX(0);
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .menu-toggle {
+                display: block;
+                font-size: 24px;
+                cursor: pointer;
+                margin-right: 20px;
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-fadeIn {
+            animation: fadeIn 0.6s ease forwards;
+        }
+        
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                
+                <i class="fas fa-bars menu-toggle" id="menuToggle"></i>
+                
+                <div class="user-menu">
+                    <button class="btn btn-outline"><i class="fas fa-wallet"></i> $2,450.00</button>
+                    <div class="user-avatar">EC</div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Dashboard Layout -->
+    <div class="dashboard">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <ul class="sidebar-menu">
+                <li><a href="#" class="active"><i class="fas fa-home"></i> <span>Dashboard</span></a></li>
+                <li><a href="#"><i class="fas fa-lightbulb"></i> <span>My Ideas</span></a></li>
+                <li><a href="#"><i class="fas fa-chart-line"></i> <span>Analytics</span></a></li>
+                <li><a href="#"><i class="fas fa-envelope"></i> <span>Messages</span></a></li>
+                
+                <h3>Monetization</h3>
+                <li><a href="#"><i class="fas fa-wallet"></i> <span>Earnings</span></a></li>
+                <li><a href="#"><i class="fas fa-users"></i> <span>Followers</span></a></li>
+                <li><a href="#"><i class="fas fa-star"></i> <span>Reviews</span></a></li>
+                
+                <h3>Content</h3>
+                <li><a href="#"><i class="fas fa-plus-circle"></i> <span>New Idea</span></a></li>
+                <li><a href="#"><i class="fas fa-tags"></i> <span>Templates</span></a></li>
+                
+                <h3>Account</h3>
+                <li><a href="#"><i class="fas fa-user"></i> <span>Profile</span></a></li>
+                <li><a href="#"><i class="fas fa-cog"></i> <span>Settings</span></a></li>
+                <li><a href="#"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Welcome Banner -->
+            <div class="welcome-banner animate-fadeIn">
+                <h2>Welcome Back, Established Creator!</h2>
+                <p>You've earned $2,450.00 helping small creators grow their channels. Share more ideas to increase your earnings and impact.</p>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="stats-cards">
+                <div class="stat-card animate-fadeIn delay-1">
+                    <h3>Total Earnings</h3>
+                    <div class="value">$2,450</div>
+                    <div class="change positive">
+                        <i class="fas fa-arrow-up"></i> $420 this month
+                    </div>
+                </div>
+                <div class="stat-card animate-fadeIn delay-1">
+                    <h3>Ideas Shared</h3>
+                    <div class="value">24</div>
+                    <div class="change positive">
+                        <i class="fas fa-arrow-up"></i> 5 this month
+                    </div>
+                </div>
+                <div class="stat-card animate-fadeIn delay-1">
+                    <h3>Followers</h3>
+                    <div class="value">1.8K</div>
+                    <div class="change positive">
+                        <i class="fas fa-arrow-up"></i> 240 this month
+                    </div>
+                </div>
+                <div class="stat-card animate-fadeIn delay-1">
+                    <h3>Success Rate</h3>
+                    <div class="value">87%</div>
+                    <div class="change positive">
+                        <i class="fas fa-arrow-up"></i> 5% increase
+                    </div>
+                </div>
+            </div>
+
+            <!-- New Idea Section -->
+            <div class="section-title animate-fadeIn delay-2">
+                <h2>Share a New Idea</h2>
+            </div>
+
+            <div class="new-idea-form animate-fadeIn delay-2">
+                <form id="ideaForm">
+                    <div class="form-group">
+                        <label for="ideaTitle">Idea Title</label>
+                        <input type="text" id="ideaTitle" placeholder="e.g., '24-Hour Minimalist Challenge'" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="ideaDescription">Detailed Description</label>
+                        <textarea id="ideaDescription" placeholder="Describe your idea in detail, including any key elements that make it successful..." required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="ideaCategory">Category</label>
+                        <select id="ideaCategory" required>
+                            <option value="">Select a category</option>
+                            <option value="challenge">Challenge</option>
+                            <option value="tutorial">Tutorial</option>
+                            <option value="review">Review</option>
+                            <option value="vlog">Vlog</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="ideaPrice">Price</label>
+                        <input type="number" id="ideaPrice" placeholder="Set your price in USD" min="5" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="ideaImage">Cover Image</label>
+                        <input type="file" id="ideaImage" accept="image/*">
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline">Save Draft</button>
+                        <button type="submit" class="btn btn-success btn-icon">
+                            <i class="fas fa-rocket"></i> Publish Idea
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Top Performing Ideas Section -->
+            <div class="section-title animate-fadeIn delay-3">
+                <h2>Your Top Performing Ideas</h2>
+                <a href="#" class="btn btn-outline">View All</a>
+            </div>
+
+            <div class="ideas-grid">
+                <!-- Idea Card 1 -->
+                <div class="idea-card animate-fadeIn delay-3">
+                    <div class="idea-image" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');"></div>
+                    <div class="idea-content">
+                        <h3>Minimalist Workspace Challenge</h3>
+                        <p>A 7-day challenge to transform any workspace into a minimalist productivity zone. Includes daily tasks, before/after ideas, and filming angles.</p>
+                        <div class="idea-stats">
+                            <div class="idea-earnings">$845</div>
+                            <div class="idea-success-rate">
+                                <i class="fas fa-check-circle"></i> 92% success
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Idea Card 2 -->
+                <div class="idea-card animate-fadeIn delay-3">
+                    <div class="idea-image" style="background-image: url('https://images.unsplash.com/photo-1579403124614-197f69d8187b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80');"></div>
+                    <div class="idea-content">
+                        <h3>Budget Tech Setup Tour</h3>
+                        <p>Detailed guide for showcasing a tech setup under $500. Includes product links, lighting setups, and script templates.</p>
+                        <div class="idea-stats">
+                            <div class="idea-earnings">$620</div>
+                            <div class="idea-success-rate">
+                                <i class="fas fa-check-circle"></i> 85% success
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Idea Card 3 -->
+                <div class="idea-card animate-fadeIn delay-3">
+                    <div class="idea-image" style="background-image: url('https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80');"></div>
+                    <div class="idea-content">
+                        <h3>5 Healthy $5 Meals</h3>
+                        <p>Complete recipe series with shopping lists, prep steps, and plating ideas perfect for food channels.</p>
+                        <div class="idea-stats">
+                            <div class="idea-earnings">$720</div>
+                            <div class="idea-success-rate">
+                                <i class="fas fa-check-circle"></i> 94% success
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Toggle sidebar on mobile
+        const menuToggle = document.getElementById('menuToggle');
+        const sidebar = document.getElementById('sidebar');
+        
+        menuToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+        });
+
+        // Animate elements on scroll
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.animate-fadeIn');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.2;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+
+        // Set initial state for animation
+        document.querySelectorAll('.animate-fadeIn').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+        });
+
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+
+        // Simulate idea card hover effect
+        const ideaCards = document.querySelectorAll('.idea-card');
+        
+        ideaCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-10px)';
+                card.style.boxShadow = '0 15px 30px rgba(0, 0, 0, 0.1)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+                card.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.05)';
+            });
+        });
+
+        // Form submission
+        document.getElementById('ideaForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Idea published successfully! It will now be available for small creators to purchase.');
+            // Reset form
+            e.target.reset();
+        });
+    </script>
+</body>
+</html>
